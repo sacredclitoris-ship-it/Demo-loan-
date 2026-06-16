@@ -1,0 +1,302 @@
+﻿<!-- Add this as STEP 5 inside application.html -->
+
+<!-- STEP 5 : PROCESSING FEE PAYMENT -->
+
+<div class="form-step" id="payment-step">
+
+    <h2>Processing Fee Payment</h2>
+    <p style="color:#666;margin:10px 0 30px;">
+        Complete the processing fee payment to proceed with your application.
+    </p>
+
+    <!-- Fee Summary -->
+    <div style="
+        background:#fff3f4;
+        border-left:5px solid #e00012;
+        padding:25px;
+        border-radius:15px;
+        margin-bottom:30px;">
+
+        <h3 style="color:#e00012;">Fee Summary</h3>
+
+        <div style="margin-top:20px;line-height:2;">
+            <div style="display:flex;justify-content:space-between;">
+                <span>Loan Type</span>
+                <strong>Personal Loan</strong>
+            </div>
+
+            <div style="display:flex;justify-content:space-between;">
+                <span>Requested Amount</span>
+                <strong>₹5,00,000</strong>
+            </div>
+
+            <div style="display:flex;justify-content:space-between;">
+                <span>Processing Fee</span>
+                <strong>₹2,999</strong>
+            </div>
+
+            <div style="display:flex;justify-content:space-between;">
+                <span>GST (18%)</span>
+                <strong>₹540</strong>
+            </div>
+
+            <hr style="margin:15px 0;">
+
+            <div style="display:flex;justify-content:space-between;">
+                <strong>Total Payable</strong>
+                <strong style="color:#e00012;font-size:22px;">
+                    ₹3,539
+                </strong>
+            </div>
+        </div>
+    </div>
+
+    <!-- Payment Tabs -->
+    <div style="
+        display:flex;
+        gap:15px;
+        margin-bottom:30px;">
+
+        <button class="pay-tab active-tab"
+                onclick="showPayment('upi',event)">
+            📱 UPI
+        </button>
+
+        <button class="pay-tab"
+                onclick="showPayment('card',event)">
+            💳 Card
+        </button>
+
+        <button class="pay-tab"
+                onclick="showPayment('netbanking',event)">
+            🏦 Net Banking
+        </button>
+
+    </div>
+
+    <!-- UPI -->
+
+    <div class="payment-method active-payment"
+         id="upi">
+
+        <div style="
+            display:grid;
+            grid-template-columns:1fr 1fr;
+            gap:30px;
+            align-items:center;">
+
+            <div>
+
+                <label>UPI ID</label>
+
+                <input type="text"
+                       placeholder="example@upi"
+                       style="
+                       width:100%;
+                       padding:14px;
+                       border:1px solid #ddd;
+                       border-radius:12px;
+                       margin-top:10px;">
+
+                <button class="primary"
+                        style="margin-top:20px;">
+                    Pay via UPI
+                </button>
+
+            </div>
+
+            <div style="text-align:center;">
+
+                <div style="
+                    width:220px;
+                    height:220px;
+                    border:2px dashed #ccc;
+                    border-radius:20px;
+                    margin:auto;
+                    display:flex;
+                    align-items:center;
+                    justify-content:center;
+                    background:#fafafa;">
+
+                    <div>
+                        <div style="font-size:80px;">📱</div>
+                        DEMO QR CODE
+                    </div>
+
+                </div>
+
+                <p style="margin-top:15px;color:#666;">
+                    Scan QR to Pay
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- CARD -->
+
+    <div class="payment-method"
+         id="card">
+
+        <div class="input-group">
+            <label>Card Number</label>
+            <input type="text"
+                   placeholder="1234 5678 9012 3456">
+        </div>
+
+        <div class="row">
+
+            <div class="input-group">
+                <label>Expiry Date</label>
+                <input type="text"
+                       placeholder="MM/YY">
+            </div>
+
+            <div class="input-group">
+                <label>CVV</label>
+                <input type="password"
+                       placeholder="***">
+            </div>
+
+        </div>
+
+        <div class="input-group">
+            <label>Name on Card</label>
+            <input type="text">
+        </div>
+
+        <button class="primary">
+            Pay ₹3,539
+        </button>
+
+    </div>
+
+    <!-- NET BANKING -->
+
+    <div class="payment-method"
+         id="netbanking">
+
+        <div class="input-group">
+
+            <label>Select Bank</label>
+
+            <select>
+                <option>HDFC Bank</option>
+                <option>ICICI Bank</option>
+                <option>SBI</option>
+                <option>Axis Bank</option>
+            </select>
+
+        </div>
+
+        <button class="primary">
+            Proceed to Bank
+        </button>
+
+    </div>
+
+    <!-- Success Box -->
+
+    <div style="
+        margin-top:35px;
+        background:#f4fff6;
+        border-left:5px solid #28a745;
+        padding:25px;
+        border-radius:15px;">
+
+        <h3 style="color:#28a745;">
+            ✓ Processing Fee Paid
+        </h3>
+
+        <p style="margin-top:10px;">
+            Transaction ID:
+            <strong>TXN98452761</strong>
+        </p>
+
+        <p>
+            Paid On:
+            <strong>14 Jun 2026 • 11:24 AM</strong>
+        </p>
+
+    </div>
+
+    <!-- Notice -->
+
+    <div style="
+        margin-top:25px;
+        background:#fffaf0;
+        padding:20px;
+        border-radius:12px;
+        color:#666;">
+
+        <strong>Important:</strong>
+
+        Processing fees should only be paid through
+        official BJ Loan Services channels after
+        preliminary approval.
+
+    </div>
+
+    <!-- Navigation -->
+
+    <div class="buttons">
+
+        <button class="secondary">
+            Back
+        </button>
+
+        <button class="primary">
+            Continue to Review
+        </button>
+
+    </div>
+
+</div>
+
+<style>
+.pay-tab{
+    border:none;
+    background:#f2f2f2;
+    padding:14px 25px;
+    border-radius:12px;
+    cursor:pointer;
+    font-weight:600;
+}
+
+.active-tab{
+    background:#e00012;
+    color:white;
+}
+
+.payment-method{
+    display:none;
+}
+
+.active-payment{
+    display:block;
+}
+</style>
+
+<script>
+function showPayment(type,event){
+
+    document
+        .querySelectorAll('.payment-method')
+        .forEach(el =>
+            el.classList.remove('active-payment'));
+
+    document
+        .querySelectorAll('.pay-tab')
+        .forEach(el =>
+            el.classList.remove('active-tab'));
+
+    document
+        .getElementById(type)
+        .classList.add('active-payment');
+
+    event.target
+        .classList.add('active-tab');
+}
+</script>

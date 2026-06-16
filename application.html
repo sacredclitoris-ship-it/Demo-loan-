@@ -1,0 +1,447 @@
+<!-- application.html -->
+<!-- BJ Loan Services - Apply Loan & Track Status -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BJ Loan Services - Loan Application</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:#f5f6fa;
+}
+
+body::before{
+    content:'';
+    position:fixed;
+    top:-250px;
+    left:-250px;
+    width:500px;
+    height:500px;
+    background:#e00012;
+    border-radius:50%;
+    z-index:-1;
+}
+
+body::after{
+    content:'';
+    position:fixed;
+    bottom:-250px;
+    right:-250px;
+    width:500px;
+    height:500px;
+    background:#e00012;
+    border-radius:50%;
+    z-index:-1;
+}
+
+.container{
+    width:95%;
+    max-width:1500px;
+    margin:40px auto;
+    display:grid;
+    grid-template-columns:2fr 1fr;
+    gap:30px;
+}
+
+.card{
+    background:white;
+    border-radius:25px;
+    padding:35px;
+    box-shadow:0 10px 30px rgba(0,0,0,.08);
+}
+
+/* Header */
+.header{
+    display:flex;
+    align-items:center;
+    gap:15px;
+    margin-bottom:30px;
+}
+
+.header img{
+    width:70px;
+}
+
+.header h1{
+    color:#e00012;
+}
+
+/* Progress */
+.progress{
+    display:flex;
+    justify-content:space-between;
+    margin-bottom:40px;
+}
+
+.step{
+    flex:1;
+    text-align:center;
+    position:relative;
+    color:#aaa;
+    font-size:13px;
+}
+
+.step::before{
+    content:'';
+    width:35px;
+    height:35px;
+    background:#ddd;
+    display:block;
+    margin:auto auto 10px;
+    border-radius:50%;
+}
+
+.step.active{
+    color:#e00012;
+    font-weight:600;
+}
+
+.step.active::before{
+    background:#e00012;
+}
+
+/* Form */
+.form-step{
+    display:none;
+}
+
+.form-step.active{
+    display:block;
+}
+
+.row{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:20px;
+}
+
+.input-group{
+    margin-bottom:20px;
+}
+
+.input-group label{
+    display:block;
+    margin-bottom:8px;
+    font-weight:500;
+}
+
+.input-group input,
+.input-group select,
+.input-group textarea{
+    width:100%;
+    padding:14px;
+    border:1px solid #ddd;
+    border-radius:12px;
+}
+
+textarea{
+    resize:none;
+    height:100px;
+}
+
+.buttons{
+    display:flex;
+    justify-content:space-between;
+    margin-top:30px;
+}
+
+button{
+    border:none;
+    padding:14px 28px;
+    border-radius:12px;
+    cursor:pointer;
+    font-weight:600;
+}
+
+.primary{
+    background:#e00012;
+    color:white;
+}
+
+.secondary{
+    background:#f1f1f1;
+}
+
+/* Upload */
+.upload-box{
+    border:2px dashed #ccc;
+    border-radius:15px;
+    padding:30px;
+    text-align:center;
+    margin-bottom:15px;
+}
+
+/* Status */
+.status-card{
+    text-align:center;
+}
+
+.status-card h2{
+    color:#e00012;
+}
+
+.status{
+    display:inline-block;
+    background:#fff3f4;
+    color:#e00012;
+    padding:10px 20px;
+    border-radius:30px;
+    font-weight:600;
+    margin:20px 0;
+}
+
+/* Timeline */
+.timeline{
+    margin-top:30px;
+}
+
+.timeline-item{
+    display:flex;
+    gap:15px;
+    margin-bottom:25px;
+}
+
+.circle{
+    width:20px;
+    height:20px;
+    border-radius:50%;
+    margin-top:5px;
+}
+
+.done{
+    background:#28a745;
+}
+
+.current{
+    background:#e00012;
+}
+
+.pending{
+    background:#ddd;
+}
+
+/* Summary */
+.summary{
+    background:#fafafa;
+    border-radius:15px;
+    padding:20px;
+    margin-top:30px;
+}
+
+.summary p{
+    margin:12px 0;
+}
+
+/* Actions */
+.actions{
+    display:grid;
+    gap:15px;
+    margin-top:30px;
+}
+
+.action-btn{
+    background:white;
+    border:2px solid #e00012;
+    color:#e00012;
+}
+
+@media(max-width:1000px){
+
+.container{
+    grid-template-columns:1fr;
+}
+
+.row{
+    grid-template-columns:1fr;
+}
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<!-- LEFT -->
+<div class="card">
+
+<div class="header">
+<img src="1000054126.png">
+<div>
+<h1>BJ Loan Services</h1>
+<p>Loan Application Portal</p>
+</div>
+</div>
+
+<div class="progress">
+<div class="step active">Personal</div>
+<div class="step">Employment</div>
+<div class="step">Loan</div>
+<div class="step">Documents</div>
+<div class="step">Review</div>
+</div>
+
+<!-- STEP 1 -->
+<div class="form-step active">
+
+<h2>Personal Details</h2><br>
+
+<div class="row">
+
+<div class="input-group">
+<label>Full Name</label>
+<input type="text">
+</div>
+
+<div class="input-group">
+<label>Aadhaar Number</label>
+<input type="text">
+</div>
+
+<div class="input-group">
+<label>Mobile Number</label>
+<input type="text">
+</div>
+
+<div class="input-group">
+<label>Email Address</label>
+<input type="email">
+</div>
+
+<div class="input-group">
+<label>PAN Number</label>
+<input type="text">
+</div>
+
+<div class="input-group">
+<label>Date of Birth</label>
+<input type="date">
+</div>
+
+</div>
+
+<div class="buttons">
+<button class="secondary">Save & Exit</button>
+<button class="primary">Continue</button>
+</div>
+
+</div>
+
+</div>
+
+<!-- RIGHT -->
+<div class="card">
+
+<div class="status-card">
+
+<h2>Application Status</h2>
+
+<div class="summary">
+
+<p><strong>Application ID:</strong><br>BJ2026001458</p>
+
+<p><strong>Loan Type:</strong><br>Personal Loan</p>
+
+<p><strong>Requested Amount:</strong><br>₹5,00,000</p>
+
+<p><strong>Expected Decision:</strong><br>24–48 Hours</p>
+
+</div>
+
+<div class="status">
+UNDER PROCESSING
+</div>
+
+</div>
+
+<div class="timeline">
+
+<div class="timeline-item">
+
+<div class="circle done"></div>
+
+<div>
+<strong>Application Submitted</strong><br>
+12 Jun 2026 • 10:42 AM
+</div>
+
+</div>
+
+<div class="timeline-item">
+
+<div class="circle done"></div>
+
+<div>
+<strong>Documents Verified</strong><br>
+13 Jun 2026 • 02:15 PM
+</div>
+
+</div>
+
+<div class="timeline-item">
+
+<div class="circle current"></div>
+
+<div>
+<strong>Credit Assessment</strong><br>
+Estimated completion today
+</div>
+
+</div>
+
+<div class="timeline-item">
+
+<div class="circle pending"></div>
+
+<div>
+<strong>Manager Approval</strong>
+</div>
+
+</div>
+
+<div class="timeline-item">
+
+<div class="circle pending"></div>
+
+<div>
+<strong>Loan Disbursement</strong>
+</div>
+
+</div>
+
+</div>
+
+<div class="actions">
+
+<button class="action-btn">
+📤 Upload Additional Documents
+</button>
+
+<button class="action-btn">
+📄 Download Application
+</button>
+
+<button class="action-btn">
+💬 Contact Loan Officer
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</body>
+</html>
